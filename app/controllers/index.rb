@@ -4,8 +4,23 @@ get '/' do
 end
 
 post '/upload' do
-  File.open('public/' + params[:file][:filename], 'w') do |f|
-    f.write(params[:file][:tempfile].read)
+  photo = Photo.new
+  photo.file = params[:image]
+  photo.save
+  redirect to('/')
+end
+
+post '/user' do
+  user = User.create(username: params[:username], password: params[:password])
+  session[:user] = user.id
+  redirect '/'
+end
+
+get '/login' do
+  user = User.find_by_username(params[:username])
+  if user.password == params[:password]
+    session[:user] = user.id
+  else
+    redirect '/'
   end
-  return "File uploaded"
 end
