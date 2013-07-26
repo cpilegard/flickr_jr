@@ -1,11 +1,8 @@
 <div class="container">
-  
-  <% if current_user %>
   <form action="/upload" method="post" enctype="multipart/form-data">
     <input type="file" name="image">
     <input type="submit" value="Upload">
   </form>
-  <% end %>
 
   <h1>All Photos</h1>
   <% @photos.each do |photo| %>
