@@ -1,0 +1,16 @@
+<div class='container'>
+	<h1><%= @album.title %></h1>
+
+	 <% if current_user %>
+	   <form action="/albums/<%= @album.id %>" method="post" enctype="multipart/form-data">
+	     <input type="file" name="image">
+	     <input type="submit" value="Upload">
+	   </form>
+	 <% else %>
+	   <p><a href='/login'>Log In</a> to upload photos.</p>
+	 <% end %>
+
+	<% @photos.each do |photo| %>
+		<p><img src='<%= photo.file %>'></p>
+	<% end %>
+</div>

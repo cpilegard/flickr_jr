@@ -1,0 +1,11 @@
+<div class='container'>
+	<h1>Create a New Album</h1>
+	<form action='/albums' method='post'>
+		Album Title: <input type='text' name='title'>
+		<input type='submit' value='Create Album'>
+	</form>
+
+	<% @albums.each do |album| %>
+		<p><a href='/albums/<%= album.id %>'><%= album.title %></a>
+	<% end %>
+</div>
