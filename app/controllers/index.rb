@@ -24,6 +24,7 @@ post '/login' do
   user = User.find_by_username(params[:username])
   if user.password == params[:password]
     session[:user] = user.id
+    redirect '/'
   else
     redirect '/'
   end
