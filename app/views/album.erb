@@ -6,6 +6,6 @@
 	</form>
 
 	<% @albums.each do |album| %>
-		<p><a href='/albums/<%= album.id %>'><%= album.title %></a>
+		<p><%= album.title %><a class='album_link' href='/albums/<%= album.id %>'>add photos</a>
 	<% end %>
 </div>
